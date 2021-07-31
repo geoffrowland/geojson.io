@@ -30489,8 +30489,8 @@ module.exports = function(context) {
                 layer: L.mapbox.tileLayer('mapbox.satellite')
             }, {
                 title: 'OCM',
-                layer: L.tileLayer('https://a.tile.thunderforest.com/cycle/{z}/{x}/{y}.png', {
-                   attribution: 'Maps &copy; <a href="http://www.thunderforest.com/">Thunderforest</a>, Data &copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                layer: L.tileLayer('https://mapseries-tilesets.s3.amazonaws.com/25_inch/somerset1/{z}/{x}/{y}.png', {
+                   attribution: 'Historic map layer courtesy of <a href="https://www.bl.uk">The British Library</a>. <a href="https://maps.nls.uk/os/25inch-england-and-wales/index.html" target="_blank">25 inch, 1841-1952 home page</a>'
                 })
             }, {
                 title: 'OSM',
