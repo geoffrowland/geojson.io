@@ -30467,20 +30467,6 @@ module.exports = function(context) {
 
     return function(selection) {
         var layers;
-
-        if (!(/a\.tiles\.mapbox.com/).test(L.mapbox.config.HTTP_URL)) {
-            layers = [{
-                title: 'Mapbox',
-                layer: L.mapbox.tileLayer('mapbox.osm-bright')
-            }, {
-                title: 'Mapbox Outdoors',
-                layer: L.mapbox.tileLayer('mapbox.mapbox-outdoors')
-            }, {
-                title: 'Satellite',
-                layer: L.mapbox.tileLayer('mapbox.satellite-full')
-            }];
-
-        } else {
             layers = [{
                 title: 'Mapbox',
                 layer: L.mapbox.tileLayer('mapbox.streets')
@@ -30490,27 +30476,34 @@ module.exports = function(context) {
 		    subdomains:['mt0','mt1','mt2','mt3'],
                     attribution: 'Imagery &copy; 2021 Google, Map data &copy; 2021 <a target="_blank" href="https://www.google.com/intl/en_uk/help/terms_maps/">Terms</a>',
 		    maxNativeZoom: 18,
-	            maxZoom: 22
-                })    
+	            maxZoom: 21
+                })
+	    }, {
+                title: 'OS NG',
+                layer: L.tileLayer('https://mapseries-tilesets.s3.amazonaws.com/os/britain10knatgrid/{z}/{x}/{y}.png', {
+                   attribution: 'Historic OS maps © <a target = "_blank" href="https://maps.nls.uk/" title="National Library of Scotland">NLS</a>',
+                   maxNativeZoom: 16,
+	           maxZoom: 21
+		})	    
             }, {
                 title: 'OS 2',
                 layer: L.tileLayer('https://mapseries-tilesets.s3.amazonaws.com/25_inch/somerset/{z}/{x}/{y}.png', {
                    attribution: 'Historic map layer courtesy of <a href="https://www.bl.uk">The British Library</a>. <a href="https://maps.nls.uk/os/25inch-england-and-wales/index.html" target="_blank">25 inch, 1841-1952 home page</a>',
                    maxNativeZoom: 18,
-	           maxZoom: 22
+	           maxZoom: 21
 		})
             }, {
                 title: 'OS 1',
                 layer: L.tileLayer('https://mapseries-tilesets.s3.amazonaws.com/25_inch/somerset1/{z}/{x}/{y}.png', {
                    attribution: 'Historic map layer courtesy of <a href="https://www.bl.uk">The British Library</a>. <a href="https://maps.nls.uk/os/25inch-england-and-wales/index.html" target="_blank">25 inch, 1841-1952 home page</a>',
                    maxNativeZoom: 18,
-	           maxZoom: 22
+	           maxZoom: 21
 		})
             }, {
                 title: 'OSM',
                 layer: L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	            maxNativeZoom: 19,	
-	            maxZoom: 22,
+	            maxZoom: 21,
                     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 })
             }];
