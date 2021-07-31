@@ -30488,7 +30488,13 @@ module.exports = function(context) {
                 title: 'Satellite',
                 layer: L.mapbox.tileLayer('mapbox.satellite')
             }, {
-                title: 'OCM',
+                title: 'OS 2',
+                layer: L.tileLayer('https://mapseries-tilesets.s3.amazonaws.com/25_inch/somerset/{z}/{x}/{y}.png', {
+                   attribution: 'Historic map layer courtesy of <a href="https://www.bl.uk">The British Library</a>. <a href="https://maps.nls.uk/os/25inch-england-and-wales/index.html" target="_blank">25 inch, 1841-1952 home page</a>'
+                })
+            }, {		    
+            }, {
+                title: 'OS 1',
                 layer: L.tileLayer('https://mapseries-tilesets.s3.amazonaws.com/25_inch/somerset1/{z}/{x}/{y}.png', {
                    attribution: 'Historic map layer courtesy of <a href="https://www.bl.uk">The British Library</a>. <a href="https://maps.nls.uk/os/25inch-england-and-wales/index.html" target="_blank">25 inch, 1841-1952 home page</a>'
                 })
