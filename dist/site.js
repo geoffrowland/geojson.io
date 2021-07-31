@@ -30507,8 +30507,7 @@ module.exports = function(context) {
                     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 })
             }];
-        }
-
+        
         var layerSwap = function(d) {
             var clicked = this instanceof d3.selection ? this.node() : this;
             layerButtons.classed('active', function() {
