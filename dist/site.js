@@ -30040,16 +30040,16 @@ module.exports = function fileBar(context) {
                         title: 'File',
                         alt: 'GeoJSON, TopoJSON, GTFS, KML, CSV, GPX and OSM XML supported',
                         action: blindImport
-                    }, {
-                        title: 'GitHub',
-                        alt: 'GeoJSON files in GitHub Repositories',
-                        authenticated: true,
-                        action: clickGitHubOpen
-                    }, {
-                        title: 'Gist',
-                        alt: 'GeoJSON files in GitHub Gists',
-                        authenticated: true,
-                        action: clickGist
+                    //}, {
+                     //   title: 'GitHub',
+                     //   alt: 'GeoJSON files in GitHub Repositories',
+                     //   authenticated: true,
+                     //   action: clickGitHubOpen
+                    //}, {
+                    //    title: 'Gist',
+                    //    alt: 'GeoJSON files in GitHub Gists',
+                    //    authenticated: true,
+                    //    action: clickGist
                     }
                 ]
             });
