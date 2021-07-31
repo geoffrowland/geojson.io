@@ -30488,14 +30488,15 @@ module.exports = function(context) {
                 title: 'Satellite',
                 layer: L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
 		    subdomains:['mt0','mt1','mt2','mt3'],
-                    attribution: 'Imagery &copy; 2021 Google, Map data &copy; 2021 <a target="_blank" href="https://www.google.com/intl/en_uk/help/terms_maps/">Terms</a>'
+                    attribution: 'Imagery &copy; 2021 Google, Map data &copy; 2021 <a target="_blank" href="https://www.google.com/intl/en_uk/help/terms_maps/">Terms</a>',
+		    maxNativeZoom: 18,
+	            maxZoom: 22
                 })    
             }, {
                 title: 'OS 2',
                 layer: L.tileLayer('https://mapseries-tilesets.s3.amazonaws.com/25_inch/somerset/{z}/{x}/{y}.png', {
                    attribution: 'Historic map layer courtesy of <a href="https://www.bl.uk">The British Library</a>. <a href="https://maps.nls.uk/os/25inch-england-and-wales/index.html" target="_blank">25 inch, 1841-1952 home page</a>'
                 })
-            }, {		    
             }, {
                 title: 'OS 1',
                 layer: L.tileLayer('https://mapseries-tilesets.s3.amazonaws.com/25_inch/somerset1/{z}/{x}/{y}.png', {
