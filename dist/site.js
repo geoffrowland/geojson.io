@@ -30468,8 +30468,12 @@ module.exports = function(context) {
     return function(selection) {
         var layers;
             layers = [{
-                title: 'Mapbox',
-                layer: L.mapbox.tileLayer('mapbox.streets')
+                title: 'OS Opendata',
+                layer: L.tileLayer('https://mapseries-tilesets.s3.amazonaws.com/opendata/{z}/{x}/{y}.png', {
+                    attribution: '<a href="https://www.ordnancesurvey.co.uk/oswebsite/opendata/">Ordnance Survey OpenData</a>. Contains OS data © Crown copyright and database right (2010)',
+                    maxNativeZoom: 17,
+	            maxZoom: 21				  
+		})
             }, {
                 title: 'Satellite',
                 layer: L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
