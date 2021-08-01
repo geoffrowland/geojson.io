@@ -29944,7 +29944,7 @@ module.exports = function fileBar(context) {
 
         var actions = [{
             title: 'Save',
-            action: (mapboxAPI || githubAPI) ? saveAction : function() {},
+            //action: (mapboxAPI || githubAPI) ? saveAction : function() {},
             children: exportFormats
         }, {
             title: 'New',
