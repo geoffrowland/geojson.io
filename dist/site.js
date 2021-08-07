@@ -30698,12 +30698,24 @@ function bindPopup(l) {
             }
             if (!('segment' in properties)) {
                 table += '<tr class="style-row"><th><input type="text" value="segment"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                    '<td><input type="number" min="1" step="1" value="1"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+            }
+	    if (!('location' in properties)) {
+                table += '<tr class="style-row"><th><input type="text" value="location"' + (!writable ? ' readonly' : '') + ' /></th>' +
                     '<td><input type="text" value=""' + (!writable ? ' readonly' : '') + ' /></td></tr>';
             }
             if (!('condition' in properties)) {
                 table += '<tr class="style-row"><th><input type="text" value="condition"' + (!writable ? ' readonly' : '') + ' /></th>' +
                     '<td><input type="text" value=""' + (!writable ? ' readonly' : '') + ' /></td></tr>';
             }
+            if (!('width' in properties)) {
+                table += '<tr class="style-row"><th><input type="text" value="width"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                    '<td><input type="number" min="0" step="0.1" value="0.8"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+            }
+            if (!('height' in properties)) {
+                table += '<tr class="style-row"><th><input type="text" value="height"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                    '<td><input type="number" min="0" step="0.5" value="1.4"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+            }		
         }
         if (l.feature.geometry.type === 'Polygon' || l.feature.geometry.type === 'MultiPolygon') {
             if (!('fill' in properties)) {
