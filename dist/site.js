@@ -30697,35 +30697,35 @@ function bindPopup(l) {
                     '<td><input type="number" min="0" max="1" step="0.1" value="1"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
             }
             if (!('segment' in properties)) {
-                table += '<tr class="style-row"><th><input type="text" value="segment"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                table += '<tr><th><input type="text" value="segment"' + (!writable ? ' readonly' : '') + ' /></th>' +
                     '<td><input type="number" min="1" step="1" value="1"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
             }
 	    if (!('location' in properties)) {
-                table += '<tr class="style-row"><th><input type="text" value="location"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                table += '<tr><th><input type="text" value="location"' + (!writable ? ' readonly' : '') + ' /></th>' +
                     '<td><input type="text" value=""' + (!writable ? ' readonly' : '') + ' /></td></tr>';
             }
             if (!('condition' in properties)) {
-                table += '<tr class="style-row"><th><input type="text" value="condition"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                table += '<tr><th><input type="text" value="condition"' + (!writable ? ' readonly' : '') + ' /></th>' +
                     '<td><input list="conditions" value=""' + (!writable ? ' readonly' : '') + ' /><datalist id="conditions"><option value="A"><option value="B"><option value="C"><option value="D"><option value="E"><option value="F"></datalist></td></tr>';
             }
             if (!('width' in properties)) {
-                table += '<tr class="style-row"><th><input type="text" value="width"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                table += '<tr><th><input type="text" value="width"' + (!writable ? ' readonly' : '') + ' /></th>' +
                     '<td><input type="number" min="0" step="0.05" value="0.75"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
             }
             if (!('height' in properties)) {
-                table += '<tr class="style-row"><th><input type="text" value="height"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                table += '<tr><th><input type="text" value="height"' + (!writable ? ' readonly' : '') + ' /></th>' +
                     '<td><input type="number" min="0" step="0.1" value="1.4"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
             }
             if (!('copes' in properties)) {
-                table += '<tr class="style-row"><th><input type="text" value="copes"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                table += '<tr><th><input type="text" value="copes"' + (!writable ? ' readonly' : '') + ' /></th>' +
                     '<td><input type="text" value=""' + (!writable ? ' readonly' : '') + ' /></td></tr>';
             }
             if (!('fence' in properties)) {
-                table += '<tr class="style-row"><th><input type="text" value="fence"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                table += '<tr><th><input type="text" value="fence"' + (!writable ? ' readonly' : '') + ' /></th>' +
                     '<td><input type="text" value=""' + (!writable ? ' readonly' : '') + ' /></td></tr>';
             }
             if (!('mortared' in properties)) {
-                table += '<tr class="style-row"><th><input type="text" value="mortared"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                table += '<tr><th><input type="text" value="mortared"' + (!writable ? ' readonly' : '') + ' /></th>' +
                     '<td><input type="text" value=""' + (!writable ? ' readonly' : '') + ' /></td></tr>';
             }
         }
@@ -30754,26 +30754,30 @@ function bindPopup(l) {
             table += '<tr class="style-row"><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
                 '<td><input list="marker-symbols" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /><datalist id="marker-symbols">' + maki + '</datalist></td></tr>';
         }
-        else if ((key == 'stroke-width' || key == 'height') && writable) {
+        else if (key == 'stroke-width' && writable) {
             table += '<tr class="style-row"><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
                 '<td><input type="number" min="0" step="0.1" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
-        }
-	else if (key == 'width' && writable) {
-            table += '<tr class="style-row"><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
-                '<td><input type="number" min="0" step="0.05" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
-        }
+        }        
         else if ((key == 'stroke-opacity' || key == 'fill-opacity') && writable) {
             table += '<tr class="style-row"><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
                 '<td><input type="number" min="0" max="1" step="0.1" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
         }
         else if (key == 'segment' && writable) {
-            table += '<tr class="style-row"><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
+            table += '<tr><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
                 '<td><input type="number" min="1" step="1" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
         }	    
         else if (key == 'condition' && writable) {
-            table += '<tr class="style-row"><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
+            table += '<tr><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
                 '<td><input list="conditions" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /><datalist id="conditions"><option value="A"><option value="B"><option value="C"><option value="D"><option value="E"><option value="F"></datalist></td></tr>';
         }
+	else if (key == 'height' && writable) {
+            table += '<tr><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                '<td><input type="number" min="0" step="0.1" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+        }
+	else if (key == 'width' && writable) {
+            table += '<tr><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                '<td><input type="number" min="0" step="0.05" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+        }    
         else {
             table += '<tr><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
                 '<td><input type="text" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
