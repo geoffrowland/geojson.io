@@ -30754,6 +30754,10 @@ function bindPopup(l) {
             table += '<tr class="style-row"><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
                 '<td><input type="number" min="0" step="0.1" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
         }
+        else if ((key == 'segment' || key == 'width' ||key == 'height') && writable) {
+            table += '<tr class="style-row"><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                '<td><input type="number" min="1" step="1" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+        }
         else if ((key == 'stroke-opacity' || key == 'fill-opacity') && writable) {
             table += '<tr class="style-row"><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
                 '<td><input type="number" min="0" max="1" step="0.1" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
