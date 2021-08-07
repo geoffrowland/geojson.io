@@ -30676,7 +30676,7 @@ function bindPopup(l) {
             }
             if (!('marker-size' in properties)) {
                 table += '<tr class="style-row"><th><input type="text" value="marker-size"' + (!writable ? ' readonly' : '') + ' /></th>' +
-                    '<td><input type="text" list="marker-size" value="medium"' + (!writable ? ' readonly' : '') + ' /><datalist id="marker-size"><option value="small"><option value="medium"><option value="large"></datalist></td></tr>';
+                    '<td><input type="text" list="marker-size" value="medium"' + (!writable ? ' readonly' : '') + ' /><datalist id="marker-size"><option value="small">small</option><option value="medium">medium</option><option value="large">large</option></datalist></td></tr>';
             }
             if (!('marker-symbol' in properties)) {
                 table += '<tr class="style-row"><th><input type="text" value="marker-symbol"' + (!writable ? ' readonly' : '') + ' /></th>' +
