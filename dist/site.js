@@ -30709,19 +30709,19 @@ function bindPopup(l) {
                     '<td><input type="text" value=""' + (!writable ? ' readonly' : '') + ' /></td></tr>';
             }
             if (!('width' in properties)) {
-                table += '<tr class="style-row"><th><input type="number" value="width"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                table += '<tr class="style-row"><th><input type="text" value="width"' + (!writable ? ' readonly' : '') + ' /></th>' +
                     '<td><input type="number" min="0" step="0.1" value="0.8"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
             }
             if (!('height' in properties)) {
-                table += '<tr class="style-row"><th><input type="number" value="height"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                table += '<tr class="style-row"><th><input type="text" value="height"' + (!writable ? ' readonly' : '') + ' /></th>' +
                     '<td><input type="number" min="0" step="0.5" value="1.4"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
             }
             if (!('copes' in properties)) {
-                table += '<tr class="style-row"><th><input type="checkbox" value="copes"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                table += '<tr class="style-row"><th><input type="text" value="copes"' + (!writable ? ' readonly' : '') + ' /></th>' +
                     '<td><input type="checkbox" value="Copes"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
             }
             if (!('fence' in properties)) {
-                table += '<tr class="style-row"><th><input type="checkbox" value="fence"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                table += '<tr class="style-row"><th><input type="text" value="fence"' + (!writable ? ' readonly' : '') + ' /></th>' +
                     '<td><input type="checkbox" value="Fence"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
             }	
         }
@@ -30750,7 +30750,7 @@ function bindPopup(l) {
             table += '<tr class="style-row"><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
                 '<td><input type="text" list="marker-symbol" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /><datalist id="marker-symbol">' + maki + '</datalist></td></tr>';
         }
-        else if (key == 'stroke-width' && writable) {
+        else if ((key == 'stroke-width' || key == 'width' ||key == 'height') && writable) {
             table += '<tr class="style-row"><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
                 '<td><input type="number" min="0" step="0.1" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
         }
