@@ -30676,11 +30676,11 @@ function bindPopup(l) {
             }
             if (!('marker-size' in properties)) {
                 table += '<tr class="style-row"><th><input type="text" value="marker-size"' + (!writable ? ' readonly' : '') + ' /></th>' +
-                    '<td><input type="text" list="marker-size" value="medium"' + (!writable ? ' readonly' : '') + ' /><datalist id="marker-size"><option value="small">small</option><option value="medium">medium</option><option value="large">large</option></datalist></td></tr>';
+                    '<td><input list="marker-sizes" value=""' + (!writable ? ' readonly' : '') + ' /><datalist id="marker-sizes"><option value="small"><option value="medium"><option value="large"></datalist></td></tr>';
             }
             if (!('marker-symbol' in properties)) {
                 table += '<tr class="style-row"><th><input type="text" value="marker-symbol"' + (!writable ? ' readonly' : '') + ' /></th>' +
-                    '<td><input type="text" list="marker-symbol" value=""' + (!writable ? ' readonly' : '') + ' /><datalist id="marker-symbol">' + maki + '</datalist></td></tr>';
+                    '<td><input list="marker-symbols" value=""' + (!writable ? ' readonly' : '') + ' /><datalist id="marker-symbols">' + maki + '</datalist></td></tr>';
             }
         }
         if (l.feature.geometry.type === 'LineString' || l.feature.geometry.type === 'MultiLineString' || l.feature.geometry.type === 'Polygon' || l.feature.geometry.type === 'MultiPolygon') {
@@ -30706,7 +30706,7 @@ function bindPopup(l) {
             }
             if (!('condition' in properties)) {
                 table += '<tr class="style-row"><th><input type="text" value="condition"' + (!writable ? ' readonly' : '') + ' /></th>' +
-                    '<td><input type="text" list="condition" value="A"' + (!writable ? ' readonly' : '') + ' /><datalist id="condition"><option value="A"><option value="B"><option value="C"><option value="D"><option value="E"><option value="F"></datalist></td></tr>';
+                    '<td><input list="conditions" value=""' + (!writable ? ' readonly' : '') + ' /><datalist id="conditions"><option value="A"><option value="B"><option value="C"><option value="D"><option value="E"><option value="F"></datalist></td></tr>';
             }
             if (!('width' in properties)) {
                 table += '<tr class="style-row"><th><input type="text" value="width"' + (!writable ? ' readonly' : '') + ' /></th>' +
@@ -30748,11 +30748,11 @@ function bindPopup(l) {
         }
         else if (key == 'marker-size' && writable) {
             table += '<tr class="style-row"><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
-                '<td><input type="text" list="marker-size" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /><datalist id="marker-size"><option value="small">small</option><option value="medium">medium</option><option value="large">large</option></datalist></td></tr>';
+                '<td><input list="marker-sizes" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /><datalist id="marker-sizes"><option value="small">small</option><option value="medium">medium</option><option value="large">large</option></datalist></td></tr>';
         }
         else if (key == 'marker-symbol' && writable) {
             table += '<tr class="style-row"><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
-                '<td><input type="text" list="marker-symbol" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /><datalist id="marker-symbol">' + maki + '</datalist></td></tr>';
+                '<td><input list="marker-symbols" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /><datalist id="marker-symbols">' + maki + '</datalist></td></tr>';
         }
         else if ((key == 'stroke-width' || key == 'height') && writable) {
             table += '<tr class="style-row"><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
@@ -30772,7 +30772,7 @@ function bindPopup(l) {
         }	    
         else if (key == 'condition' && writable) {
             table += '<tr class="style-row"><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
-                '<td><input type="text" list="condition" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /><datalist id="condition"><option value="A"><option value="B"><option value="C"><option value="D"><option value="E"><option value="F"></datalist></td></tr>';
+                '<td><input list="conditions" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /><datalist id="conditions"><option value="A"><option value="B"><option value="C"><option value="D"><option value="E"><option value="F"></datalist></td></tr>';
         }
         else {
             table += '<tr><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
