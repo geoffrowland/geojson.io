@@ -30718,11 +30718,11 @@ function bindPopup(l) {
             }
             if (!('copes' in properties)) {
                 table += '<tr class="style-row"><th><input type="text" value="copes"' + (!writable ? ' readonly' : '') + ' /></th>' +
-                    '<td><input type="checkbox" value="Copes"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+                    '<td><input type="checkbox" value=""' + (!writable ? ' readonly' : '') + ' /></td></tr>';
             }
             if (!('fence' in properties)) {
                 table += '<tr class="style-row"><th><input type="text" value="fence"' + (!writable ? ' readonly' : '') + ' /></th>' +
-                    '<td><input type="checkbox" value="Fence"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+                    '<td><input type="checkbox" value=""' + (!writable ? ' readonly' : '') + ' /></td></tr>';
             }	
         }
         if (l.feature.geometry.type === 'Polygon' || l.feature.geometry.type === 'MultiPolygon') {
