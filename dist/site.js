@@ -30718,11 +30718,11 @@ function bindPopup(l) {
             }
             if (!('copes' in properties)) {
                 table += '<tr class="style-row"><th><input type="text" value="copes"' + (!writable ? ' readonly' : '') + ' /></th>' +
-                    '<td><input type="checkbox" value=""' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+                    '<td><input type="text" value=""' + (!writable ? ' readonly' : '') + ' /></td></tr>';
             }
             if (!('fence' in properties)) {
                 table += '<tr class="style-row"><th><input type="text" value="fence"' + (!writable ? ' readonly' : '') + ' /></th>' +
-                    '<td><input type="checkbox" value=""' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+                    '<td><input type="text" value=""' + (!writable ? ' readonly' : '') + ' /></td></tr>';
             }	
         }
         if (l.feature.geometry.type === 'Polygon' || l.feature.geometry.type === 'MultiPolygon') {
@@ -30762,10 +30762,6 @@ function bindPopup(l) {
             table += '<tr class="style-row"><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
                 '<td><input type="number" min="0" max="1" step="0.1" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
         }
-	else if ((key == 'copes' || key == 'fence') && writable) {
-            table += '<tr class="style-row"><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
-                '<td><input type="checkbox" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
-        }    
         else {
             table += '<tr><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
                 '<td><input type="text" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
