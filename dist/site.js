@@ -30706,7 +30706,7 @@ function bindPopup(l) {
             }
             if (!('condition' in properties)) {
                 table += '<tr class="style-row"><th><input type="text" value="condition"' + (!writable ? ' readonly' : '') + ' /></th>' +
-                    '<td><input type="text" value=""' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+                    '<td><input type="text" list="condition" value="A"' + (!writable ? ' readonly' : '') + ' /><datalist id="condition"><option value="A"><option value="B"><option value="C"><option value="D"><option value="E"><option value="F"></datalist></td></tr>';
             }
             if (!('width' in properties)) {
                 table += '<tr class="style-row"><th><input type="text" value="width"' + (!writable ? ' readonly' : '') + ' /></th>' +
@@ -30754,13 +30754,17 @@ function bindPopup(l) {
             table += '<tr class="style-row"><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
                 '<td><input type="number" min="0" step="0.1" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
         }
-        else if (key == 'segment' && writable) {
-            table += '<tr class="style-row"><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
-                '<td><input type="number" min="1" step="1" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
-        }
         else if ((key == 'stroke-opacity' || key == 'fill-opacity') && writable) {
             table += '<tr class="style-row"><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
                 '<td><input type="number" min="0" max="1" step="0.1" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+        }
+        else if (key == 'segment' && writable) {
+            table += '<tr class="style-row"><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                '<td><input type="number" min="1" step="1" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+        }	    
+        else if (key == 'condition' && writable) {
+            table += '<tr class="style-row"><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                '<td><input type="text" list="condition" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /><datalist id="condition"><option value="A"><option value="B"><option value="C"><option value="D"><option value="E"><option value="F"></datalist></td></tr>';
         }
         else {
             table += '<tr><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
