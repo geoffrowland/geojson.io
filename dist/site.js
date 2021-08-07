@@ -30686,11 +30686,11 @@ function bindPopup(l) {
         if (l.feature.geometry.type === 'LineString' || l.feature.geometry.type === 'MultiLineString' || l.feature.geometry.type === 'Polygon' || l.feature.geometry.type === 'MultiPolygon') {
             if (!('stroke' in properties)) {
                 table += '<tr class="style-row"><th><input type="text" value="stroke"' + (!writable ? ' readonly' : '') + ' /></th>' +
-                    '<td><input type="color" value="#555555"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+                    '<td><input type="color" value="#ff7700"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
             }
             if (!('stroke-width' in properties)) {
                 table += '<tr class="style-row"><th><input type="text" value="stroke-width"' + (!writable ? ' readonly' : '') + ' /></th>' +
-                    '<td><input type="number" min="0" step="0.1" value="2"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+                    '<td><input type="number" min="0" step="0.1" value="5"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
             }
             if (!('stroke-opacity' in properties)) {
                 table += '<tr class="style-row"><th><input type="text" value="stroke-opacity"' + (!writable ? ' readonly' : '') + ' /></th>' +
@@ -30723,7 +30723,11 @@ function bindPopup(l) {
             if (!('fence' in properties)) {
                 table += '<tr class="style-row"><th><input type="text" value="fence"' + (!writable ? ' readonly' : '') + ' /></th>' +
                     '<td><input type="text" value=""' + (!writable ? ' readonly' : '') + ' /></td></tr>';
-            }	
+            }
+            if (!('mortared' in properties)) {
+                table += '<tr class="style-row"><th><input type="text" value="mortared"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                    '<td><input type="text" value=""' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+            }
         }
         if (l.feature.geometry.type === 'Polygon' || l.feature.geometry.type === 'MultiPolygon') {
             if (!('fill' in properties)) {
