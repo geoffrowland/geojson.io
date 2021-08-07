@@ -30686,7 +30686,7 @@ function bindPopup(l) {
         if (l.feature.geometry.type === 'LineString' || l.feature.geometry.type === 'MultiLineString' || l.feature.geometry.type === 'Polygon' || l.feature.geometry.type === 'MultiPolygon') {
             if (!('stroke' in properties)) {
                 table += '<tr class="style-row"><th><input type="text" value="stroke"' + (!writable ? ' readonly' : '') + ' /></th>' +
-                    '<td><input type="color" value="#ff7700"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+                    '<td><input type="color" value="#ff7f00"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
             }
             if (!('stroke-width' in properties)) {
                 table += '<tr class="style-row"><th><input type="text" value="stroke-width"' + (!writable ? ' readonly' : '') + ' /></th>' +
