@@ -30744,6 +30744,10 @@ function bindPopup(l) {
                 table += '<tr><th><input type="text" value="stone"' + (!writable ? ' readonly' : '') + ' /></th>' +
                     '<td><input type="text" value="Ham Hill Limestone"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
             }
+            if (!('notes' in properties)) {
+                table += '<tr><th><input type="text" value="notes"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                    '<td><input type="text" value="Ham Hill Limestone"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+            }
         }
         if (l.feature.geometry.type === 'Polygon' || l.feature.geometry.type === 'MultiPolygon') {
             if (!('fill' in properties)) {
