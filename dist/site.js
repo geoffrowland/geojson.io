@@ -30704,6 +30704,10 @@ function bindPopup(l) {
                 table += '<tr><th><input type="text" value="location"' + (!writable ? ' readonly' : '') + ' /></th>' +
                     '<td><input type="text" value=""' + (!writable ? ' readonly' : '') + ' /></td></tr>';
             }
+	    if (!('dividing' in properties)) {
+                table += '<tr><th><input type="text" value="dividing"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                    '<td><input type="text" value=""' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+            }		
             if (!('condition' in properties)) {
                 table += '<tr><th><input type="text" value="condition"' + (!writable ? ' readonly' : '') + ' /></th>' +
                     '<td><input list="conditions" value=""' + (!writable ? ' readonly' : '') + ' /><datalist id="conditions"><option value="A"><option value="B"><option value="C"><option value="D"><option value="E"><option value="F"></datalist></td></tr>';
@@ -30720,13 +30724,25 @@ function bindPopup(l) {
                 table += '<tr><th><input type="text" value="copes"' + (!writable ? ' readonly' : '') + ' /></th>' +
                     '<td><input type="text" value=""' + (!writable ? ' readonly' : '') + ' /></td></tr>';
             }
+            if (!('mortared' in properties)) {
+                table += '<tr><th><input type="text" value="mortared"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                    '<td><input type="text" value=""' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+            }
             if (!('fence' in properties)) {
                 table += '<tr><th><input type="text" value="fence"' + (!writable ? ' readonly' : '') + ' /></th>' +
                     '<td><input type="text" value=""' + (!writable ? ' readonly' : '') + ' /></td></tr>';
             }
-            if (!('mortared' in properties)) {
-                table += '<tr><th><input type="text" value="mortared"' + (!writable ? ' readonly' : '') + ' /></th>' +
-                    '<td><input type="text" value=""' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+            if (!('style' in properties)) {
+                table += '<tr><th><input type="text" value="style"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                    '<td><input type="text" value="Double-faced"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+            }
+            if (!('detail' in properties)) {
+                table += '<tr><th><input type="text" value="detail"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                    '<td><input type="text" value="Coursed, horizontal rubble with some square dressed stone"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+            }
+            if (!('stone' in properties)) {
+                table += '<tr><th><input type="text" value="stone"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                    '<td><input type="text" value="Ham Hill Limestone"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
             }
         }
         if (l.feature.geometry.type === 'Polygon' || l.feature.geometry.type === 'MultiPolygon') {
