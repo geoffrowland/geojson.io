@@ -30569,7 +30569,7 @@ module.exports = function(context, readonly) {
             }));
 
         L.control.scale().setPosition('bottomright').addTo(context.map);
-        context.map.zoomControl.setPosition('topleft');
+        context.map.zoomControl.setPosition('topright');
 
         L.hash(context.map);
 
