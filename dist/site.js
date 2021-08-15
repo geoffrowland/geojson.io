@@ -30067,19 +30067,20 @@ module.exports = function fileBar(context) {
             //  }
                 );
 
-            if (mapboxAPI) actions.splice(3, 0, {
-                    title: 'Share',
-                    action: function() {
-                        context.container.call(share(context));
-                    }
-                });
-        } else {
-            actions.unshift({
-                title: 'Open',
-                alt: 'CSV, GTFS, KML, GPX, and other filetypes',
-                action: blindImport
-            });
-        }
+          //  if (mapboxAPI) actions.splice(3, 0, {
+		  	  	   // title: '',
+                    //title: 'Share',
+                   //action: function() {
+                   //       context.container.call(share(context));
+                    // }
+           // });
+        // } else {
+        //     actions.unshift({
+        //         title: 'Open',
+        //         alt: 'CSV, GTFS, KML, GPX, and other filetypes',
+         //        action: blindImport
+         //    });
+         }
 
         var items = selection.append('div')
             .attr('class', 'inline')
@@ -30112,7 +30113,7 @@ module.exports = function fileBar(context) {
         if (mapboxAPI || githubAPI) {
             var filetype = name.append('a')
                 .attr('target', '_blank')
-                .attr('class', 'icon-file-alt');
+            //    .attr('class', 'icon-file-alt');
 
             var filename = name.append('span')
                 .attr('class', 'filename')
@@ -30133,7 +30134,8 @@ module.exports = function fileBar(context) {
         function sourceIcon(type) {
             if (type == 'github') return 'icon-github';
             else if (type == 'gist') return 'icon-github-alt';
-            else return 'icon-file-alt';
+            //else return 'icon-file-alt';
+            else return '';
         }
 
         function saveNoun(_) {
