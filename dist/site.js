@@ -30053,17 +30053,19 @@ module.exports = function fileBar(context) {
                     }
                 ]
             });
-            actions[1].children.unshift({
-                    title: 'GitHub',
-                    alt: 'GeoJSON files in GitHub Repositories',
-                    authenticated: true,
-                    action: clickGitHubSave
-                }, {
-                    title: 'Gist',
-                    alt: 'GeoJSON files in GitHub Gists',
-                    authenticated: true,
-                    action: clickGistSave
-                });
+            actions[1].children.unshift(
+            //{
+            //        title: 'GitHub',
+            //        alt: 'GeoJSON files in GitHub Repositories',
+            //        authenticated: true,
+            //        action: clickGitHubSave
+            //    }, {
+            //        title: 'Gist',
+            //        alt: 'GeoJSON files in GitHub Gists',
+            //        authenticated: true,
+            //        action: clickGistSave
+            //  }
+                );
 
             if (mapboxAPI) actions.splice(3, 0, {
                     title: 'Share',
@@ -30114,7 +30116,7 @@ module.exports = function fileBar(context) {
 
             var filename = name.append('span')
                 .attr('class', 'filename')
-                .text('unsaved');
+               // .text('unsaved');
         }
 
         function clickGistSave() {
@@ -30319,7 +30321,7 @@ module.exports = function fileBar(context) {
                 type = data.type,
                 path = data.path;
             if (mapboxAPI || githubAPI) filename
-                .text(path ? path : 'unsaved')
+                //.text(path ? path : 'unsaved')
                 .classed('deemphasize', context.data.dirty);
             if (mapboxAPI || githubAPI) filetype
                 .attr('href', data.url)
@@ -31174,11 +31176,11 @@ module.exports = function(context) {
             .attr('href', '#');
 
         function nextLogin() {
-            action.text('login').on('click', login);
-            name
-                .text('anon')
-                .attr('href', '#')
-                .on('click', function() { d3.event.preventDefault(); });
+            //action.text('login').on('click', login);
+            //name
+            //    .text('anon')
+            //    .attr('href', '#')
+           //     .on('click', function() { d3.event.preventDefault(); });
         }
 
         function nextLogout() {
@@ -31194,10 +31196,10 @@ module.exports = function(context) {
         function logout() {
             d3.event.preventDefault();
             context.user.logout();
-            nextLogin();
+            //nextLogin();
         }
 
-        nextLogin();
+        //nextLogin();
 
         if (context.user.token()) {
             context.user.details(function(err, d) {
