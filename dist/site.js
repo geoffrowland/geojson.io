@@ -4538,8 +4538,8 @@ function csv2geojson(x, options, callback) {
                     geometry: {
                         type: 'Point',
                         coordinates: [
-                            parseFloat(lonf),
-                            parseFloat(latf)
+                            parseFloat(lonf.toFixed(5)),
+                            parseFloat(latf.toFixed(5))
                         ]
                     }
                 });
@@ -9732,7 +9732,6 @@ module.exports.area = function(layer) {
 		var center = map.getCenter(),
 		    zoom = map.getZoom(),
 		    precision = Math.max(0, Math.ceil(Math.log(zoom) / Math.LN2));
-
 		return "#" + [zoom,
 			center.lat.toFixed(precision),
 			center.lng.toFixed(precision)
@@ -11396,7 +11395,7 @@ osmtogeojson = function( data, options ) {
         },
         "geometry"   : {
           "type" : "Point",
-          "coordinates" : [+pois[i].lon, +pois[i].lat],
+          "coordinates" :  [+pois[i].lon, +pois[i].lat]
         }
       });
     }
@@ -11605,7 +11604,7 @@ osmtogeojson = function( data, options ) {
             },
             "geometry"   : {
               "type" : mp_type,
-              "coordinates" : mp_coords,
+              "coordinates" : mp_coords
             }
           }
           if (is_tainted)
@@ -11652,7 +11651,7 @@ osmtogeojson = function( data, options ) {
         },
         "geometry"   : {
           "type" : way_type,
-          "coordinates" : coords,
+          "coordinates" : coords
         }
       }
       if (ways[i].tainted)
@@ -30473,45 +30472,69 @@ module.exports = function(context) {
         var layers;
             layers = [{
                 title: 'OS Opendata',
+                desc: 'OS Opendata',
                 layer: L.tileLayer('https://mapseries-tilesets.s3.amazonaws.com/opendata/{z}/{x}/{y}.png', {
                     attribution: '<a href="https://www.ordnancesurvey.co.uk/oswebsite/opendata/">Ordnance Survey OpenData</a>. Contains OS data © Crown copyright and database right (2010)',
                     maxNativeZoom: 17,
-	            maxZoom: 21				  
-		})
+	                maxZoom: 21				  
+	        	})
             }, {
                 title: 'Satellite',
+                desc: 'Google Satellite',
                 layer: L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
-		    subdomains:['mt0','mt1','mt2','mt3'],
+		            subdomains:['mt0','mt1','mt2','mt3'],
                     attribution: 'Imagery &copy; 2021 Google, Map data &copy; 2021 <a target="_blank" href="https://www.google.com/intl/en_uk/help/terms_maps/">Terms</a>',
-		    maxNativeZoom: 18,
-	            maxZoom: 21
+		            maxNativeZoom: 18,
+	                maxZoom: 21
                 })
-	    }, {
+    	    }, {
+                title: 'Outdoor',
+                desc: 'OS Outdoor',
+                layer: L.tileLayer('https://api.os.uk/maps/raster/v1/zxy/Outdoor_3857/{z}/{x}/{y}.png?key=cka4FDAm4wJqckvuMIcgaORR7CLM41LQ', {
+                   attribution: 'Contains OS data &copy; Crown copyright and database rights 2021',
+                   maxNativeZoom: 20,
+	               maxZoom: 21
+		        })	    
+            }, {
                 title: 'OS NG',
+                desc: 'OS National Grid ~1950',
                 layer: L.tileLayer('https://mapseries-tilesets.s3.amazonaws.com/os/britain10knatgrid/{z}/{x}/{y}.png', {
                    attribution: 'Historic OS maps © <a target = "_blank" href="https://maps.nls.uk/" title="National Library of Scotland">NLS</a>',
                    maxNativeZoom: 16,
-	           maxZoom: 21
-		})	    
+	               maxZoom: 21
+		        })	    
             }, {
                 title: 'OS 2',
+                desc: 'OS 2nd Edition ~1900',
                 layer: L.tileLayer('https://mapseries-tilesets.s3.amazonaws.com/25_inch/somerset/{z}/{x}/{y}.png', {
                    attribution: 'Historic map layer courtesy of <a href="https://www.bl.uk">The British Library</a>. <a href="https://maps.nls.uk/os/25inch-england-and-wales/index.html" target="_blank">25 inch, 1841-1952 home page</a>',
                    maxNativeZoom: 18,
-	           maxZoom: 21
-		})
+	               maxZoom: 21
+	        	})
             }, {
                 title: 'OS 1',
+                desc: 'OS 1st Edition ~1880',
                 layer: L.tileLayer('https://mapseries-tilesets.s3.amazonaws.com/25_inch/somerset1/{z}/{x}/{y}.png', {
                    attribution: 'Historic map layer courtesy of <a href="https://www.bl.uk">The British Library</a>. <a href="https://maps.nls.uk/os/25inch-england-and-wales/index.html" target="_blank">25 inch, 1841-1952 home page</a>',
                    maxNativeZoom: 18,
-	           maxZoom: 21
-		})
-            }, {
+	               maxZoom: 21
+		        })
+             }, {
+            //   title: 'BGS',
+            //      layer: L.tileLayer.wms('https://map.bgs.ac.uk/arcgis/services/BGS_Detailed_Geology/MapServer/WMSServer', {
+    	 	//        layers: 'BGS.50k.Bedrock,BGS.50k.Superficial.deposits,BGS.50k.Linear.features',
+            //        format: 'image/png',
+            //        minZoom: 13,
+            //        maxNativeZoom: 18,
+            //        maxZoom: 21,
+            //        attribution: '<a target="_blank" href = "https://www.bgs.ac.uk/data/services/wms.html" title="British Geological Survey">BGS</a> maps © UKRI 2020'
+            //    })
+            //}, {
                 title: 'OSM',
+                desc: 'Open Street Map',
                 layer: L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-	            maxNativeZoom: 19,	
-	            maxZoom: 21,
+	                maxNativeZoom: 19,	
+	                maxZoom: 21,
                     attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
                 })
             }];
@@ -30537,6 +30560,7 @@ module.exports = function(context) {
             .append('button')
             .attr('class', 'pad0x')
             .on('click', layerSwap)
+            .attr('title', function(d) { return d.desc; })
             .text(function(d) { return d.title; });
 
         layerButtons.filter(function(d, i) { return i === 0; }).call(layerSwap);
@@ -30567,7 +30591,7 @@ module.exports = function(context, readonly) {
 
     function map(selection) {
         context.map = L.mapbox.map(selection.node(), null)
-            .setView([20, 0], 2)
+            .setView([50.946801, -2.735166], 14)
             .addControl(L.mapbox.geocoderControl('mapbox.places', {
                 position: 'topright'
             }));
@@ -30686,6 +30710,18 @@ function bindPopup(l) {
                 table += '<tr class="style-row"><th><input type="text" value="marker-symbol"' + (!writable ? ' readonly' : '') + ' /></th>' +
                     '<td><input list="marker-symbols" value=""' + (!writable ? ' readonly' : '') + ' /><datalist id="marker-symbols">' + maki + '</datalist></td></tr>';
             }
+            if (!('id' in properties)) {
+                table += '<tr><th title="Enter identifier as text or number"><input type="text" value="id"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                    '<td><input type="text" value=""' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+            }
+            if (!('feature-type' in properties)) {
+                table += '<tr ><th><input type="text" value="feature-type"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                     '<td><input list="feature-types" value=""' + (!writable ? ' readonly' : '') + ' /><datalist id="feature-types"><option value="Cheekend"><option value="Corner"><option value="Lunky"><option value="Stepthrough"><option value="Stile"><option value="Gate"><option value="Boundary stone"><option value="Quarry, active"><option value="Quarry, disused"></datalist></td></tr>';
+            }
+            if (!('notes' in properties)) {
+                table += '<tr><th title="Enter notes"><input type="text" value="notes"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                    '<td><input type="text" value=""' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+            }
         }
         if (l.feature.geometry.type === 'LineString' || l.feature.geometry.type === 'MultiLineString' || l.feature.geometry.type === 'Polygon' || l.feature.geometry.type === 'MultiPolygon') {
             if (!('stroke' in properties)) {
@@ -30700,21 +30736,29 @@ function bindPopup(l) {
                 table += '<tr class="style-row"><th><input type="text" value="stroke-opacity"' + (!writable ? ' readonly' : '') + ' /></th>' +
                     '<td><input type="number" min="0" max="1" step="0.1" value="1"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
             }
-            if (!('segment' in properties)) {
-                table += '<tr><th><input type="text" value="segment"' + (!writable ? ' readonly' : '') + ' /></th>' +
-                    '<td><input type="number" min="1" step="1" value="1"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+            if (!('id' in properties)) {
+                table += '<tr><th><input type="text" value="id"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                    '<td><input type="text" value="identifier as number or text"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
             }
-	    if (!('location' in properties)) {
+	        if (!('location' in properties)) {
                 table += '<tr><th><input type="text" value="location"' + (!writable ? ' readonly' : '') + ' /></th>' +
                     '<td><input type="text" value=""' + (!writable ? ' readonly' : '') + ' /></td></tr>';
             }
-	    if (!('dividing' in properties)) {
-                table += '<tr><th><input type="text" value="dividing"' + (!writable ? ' readonly' : '') + ' /></th>' +
-                    '<td><input type="text" value=""' + (!writable ? ' readonly' : '') + ' /></td></tr>';
-            }		
+	        if (!('land-use-1' in properties)) {
+                table += '<tr><th><input type="text" value="land-use-1"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                    '<td><input list="land-uses-1" value=""' + (!writable ? ' readonly' : '') + ' /><datalist id="land-uses-1"><option value="A - Arable"><option value="B - Building, house, garden, farmhouse, churchyard"><option value="F - Rough grazing, moor, down, fell, meadow, "><option value="G - Permanent grass"><option value="R - Metalled road or railway"><option value="S - Sea, river, lake"><option value="T - Unsurfaced track"><option value="W - Metalled road or railway"></datalist></td></tr>';
+            }
+	        if (!('land-use-2' in properties)) {
+                table += '<tr><th><input type="text" value="land-use-2"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                    '<td><input list="land-uses-2" value=""' + (!writable ? ' readonly' : '') + ' /><datalist id="land-uses-2"><option value="A - Arable"><option value="B - Building, house, garden, farmhouse, churchyard"><option value="F - Rough grazing, moor, down, fell, meadow, "><option value="G - Permanent grass"><option value="R - Metalled road or railway"><option value="S - Sea, river, lake"><option value="T - Unsurfaced track"><option value="W - Metalled road or railway"></datalist></td></tr>';
+            }
+            if (!('fencing' in properties)) {
+                table += '<tr><th><input type="text" value="fencing"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                    '<td><input list="fencings" value=""' + (!writable ? ' readonly' : '') + ' /><datalist id="fencings"><option value="F0 - None"><option value="F1 - Single strand near the top"><option value="F2 - Stockproof and continuous post and wire"><option value="F3 - Electric"><option value="F4 - Other"></datalist></td></tr>';
+            }
             if (!('condition' in properties)) {
                 table += '<tr><th><input type="text" value="condition"' + (!writable ? ' readonly' : '') + ' /></th>' +
-                    '<td><input list="conditions" value=""' + (!writable ? ' readonly' : '') + ' /><datalist id="conditions"><option value="A"><option value="B"><option value="C"><option value="D"><option value="E"><option value="F"></datalist></td></tr>';
+                    '<td><input list="conditions" value=""' + (!writable ? ' readonly' : '') + ' /><datalist id="conditions"><option value="A - Excellent, stockproof"><option value="B - Sound, minor defects, stockproof"><option value="C - Potential or advancing deterioration, stockproof"><option value="D - Early stage of dereliction, not stockproof"><option value="E - Derelict, not stockproof"><option value="F - Remnant, not stockproof"><option value="G - Missing, not stockproof"></datalist></td></tr>';
             }
             if (!('width' in properties)) {
                 table += '<tr><th><input type="text" value="width"' + (!writable ? ' readonly' : '') + ' /></th>' +
@@ -30724,33 +30768,41 @@ function bindPopup(l) {
                 table += '<tr><th><input type="text" value="height"' + (!writable ? ' readonly' : '') + ' /></th>' +
                     '<td><input type="number" min="0" step="0.1" value="1.4"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
             }
-            if (!('copes' in properties)) {
-                table += '<tr><th><input type="text" value="copes"' + (!writable ? ' readonly' : '') + ' /></th>' +
+             if (!('wall-style' in properties)) {
+                table += '<tr><th><input type="text" value="wall-style"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                    '<td><input type="text" value="Double-faced, in ditch of hillfort"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+            }
+            if (!('wall-stones' in properties)) {
+                table += '<tr><th><input type="text" value="wall-stones"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                    '<td><input type="text" value="Roughly coursed, laminar and tabular rubble stone"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+            }
+            if (!('through-stones' in properties)) {
+                table += '<tr><th><input type="text" value="though-stones"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                    '<td><input type="text" value="Though stones, flush, 3/4 or absent"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+            }
+            if (!('top-stones' in properties)) {
+                table += '<tr><th><input type="text" value="top-stones"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                    '<td><input type="text" value="Vertical cope stones, irregular, random order"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+            }
+            if (!('stone-type' in properties)) {
+                table += '<tr><th><input type="text" value="stone-type"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                    '<td><input list="stone-types" value=""' + (!writable ? ' readonly' : '') + ' /><datalist id="stone-types"><option value="Upper Greensand"><option value="Purbeck Limestone"><option value="Portland Freestone"><option value="Corallian Limestone"><option value="Forest Marble"><option value="Fullers Earth Rock"><option value="Inferior Oolite"><option value="Ham Hill Limestone"><option value="Blue Lias"><option value="White Lias"></datalist></td></tr>';
+            }
+            if (!('plant-community' in properties)) {
+                table += '<tr><th><input type="text" value="plant-community"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                    '<td><input list="plant-communities" value=""' + (!writable ? ' readonly' : '') + ' /><datalist id="plant-communities"><option value="1 - Pioneering crusty lichens"><option value="2 - Abundant mosses and lichens"><option value="3 - Diverse mosses, some vascular plants, lichens rare"><option value="4 - Dominated by bramble, ivy and moss"><option value="5 - Shrubby and woodly plants"></datalist></td></tr>';
+            }
+            if (!('fauna' in properties)) {
+                table += '<tr><th><input type="text" value="fauna"' + (!writable ? ' readonly' : '') + ' /></th>' +
                     '<td><input type="text" value=""' + (!writable ? ' readonly' : '') + ' /></td></tr>';
             }
-            if (!('mortared' in properties)) {
-                table += '<tr><th><input type="text" value="mortared"' + (!writable ? ' readonly' : '') + ' /></th>' +
+            if (!('history' in properties)) {
+                table += '<tr><th><input type="text" value="history"' + (!writable ? ' readonly' : '') + ' /></th>' +
                     '<td><input type="text" value=""' + (!writable ? ' readonly' : '') + ' /></td></tr>';
-            }
-            if (!('fence' in properties)) {
-                table += '<tr><th><input type="text" value="fence"' + (!writable ? ' readonly' : '') + ' /></th>' +
-                    '<td><input type="text" value=""' + (!writable ? ' readonly' : '') + ' /></td></tr>';
-            }
-            if (!('style' in properties)) {
-                table += '<tr><th><input type="text" value="style"' + (!writable ? ' readonly' : '') + ' /></th>' +
-                    '<td><input type="text" value="Double-faced"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
-            }
-            if (!('detail' in properties)) {
-                table += '<tr><th><input type="text" value="detail"' + (!writable ? ' readonly' : '') + ' /></th>' +
-                    '<td><input type="text" value="Coursed, horizontal rubble with some square dressed stone"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
-            }
-            if (!('stone' in properties)) {
-                table += '<tr><th><input type="text" value="stone"' + (!writable ? ' readonly' : '') + ' /></th>' +
-                    '<td><input type="text" value="Ham Hill Limestone"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
             }
             if (!('notes' in properties)) {
                 table += '<tr><th><input type="text" value="notes"' + (!writable ? ' readonly' : '') + ' /></th>' +
-                    '<td><input type="text" value="Ham Hill Limestone"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+                    '<td><input type="text" value=""' + (!writable ? ' readonly' : '') + ' /></td></tr>';
             }
         }
         if (l.feature.geometry.type === 'Polygon' || l.feature.geometry.type === 'MultiPolygon') {
@@ -30778,6 +30830,14 @@ function bindPopup(l) {
             table += '<tr class="style-row"><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
                 '<td><input list="marker-symbols" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /><datalist id="marker-symbols">' + maki + '</datalist></td></tr>';
         }
+        else if (key == 'feature-type' && writable) {
+                        table += '<tr ><th><input type="text" value="feature-type"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                     '<td><input list="feature-types" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /><datalist id="feature-types"><option value="Cheekend"><option value="Corner"><option value="Lunky"><option value="Stepthrough"><option value="Stile"><option value="Gate"><option value="Boundary stone"><option value="Quarry, active"><option value="Quarry, disused"></datalist></td></tr>';
+        }
+         else if (key == 'notes' && writable) {
+                        table += '<tr ><th><input type="text" value="notes"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                     '<td><input type="text" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+        }
         else if (key == 'stroke-width' && writable) {
             table += '<tr class="style-row"><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
                 '<td><input type="number" min="0" step="0.1" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
@@ -30786,22 +30846,34 @@ function bindPopup(l) {
             table += '<tr class="style-row"><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
                 '<td><input type="number" min="0" max="1" step="0.1" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
         }
-        else if (key == 'segment' && writable) {
+        else if (key == 'land-use-1' && writable) {
             table += '<tr><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
-                '<td><input type="number" min="1" step="1" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
-        }	    
+                '<td><input list="land-uses-1" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /><datalist id="land-uses-1"><option value="A - Arable"><option value="B - Building, house, garden, farmhouse, churchyard"><option value="F - Rough grazing, moor, down, fell, meadow, "><option value="G - Permanent grass"><option value="R - Metalled road or railway"><option value="S - Sea, river, lake"><option value="T - Unsurfaced track"><option value="W - Metalled road or railway"></datalist></td></tr>';
+        }
+        else if (key == 'land-use-2' && writable) {
+            table += '<tr><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                '<td><input list="land-uses-2" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /><datalist id="land-uses-2"><option value="A - Arable"><option value="B - Building, house, garden, farmhouse, churchyard"><option value="F - Rough grazing, moor, down, fell, meadow, "><option value="G - Permanent grass"><option value="R - Metalled road or railway"><option value="S - Sea, river, lake"><option value="T - Unsurfaced track"><option value="W - Metalled road or railway"></datalist></td></tr>';
+        }  
+        else if (key == 'fencing' && writable) {
+            table += '<tr><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                '<td><input list="fencings" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /><datalist id="fencings"><option value="F0 - None"><option value="F1 - Single strand near the top"><option value="F2 - Stockproof and continuous post and wire"><option value="F3 - Electric"><option value="F4 - Other"></datalist></td></tr>';
+        }    
         else if (key == 'condition' && writable) {
             table += '<tr><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
-                '<td><input list="conditions" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /><datalist id="conditions"><option value="A"><option value="B"><option value="C"><option value="D"><option value="E"><option value="F"></datalist></td></tr>';
+                '<td><input list="conditions" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /><datalist id="conditions"><option value="A - Excellent, stockproof"><option value="B - Sound, minor defects, stockproof"><option value="C - Potential or advancing deterioration, stockproof"><option value="D - Early stage of dereliction, not stockproof"><option value="E - Derelict, not stockproof"><option value="F - Remnant, not stockproof"><option value="G - Missing, not stockproof"></datalist></td></tr>';
         }
-	else if (key == 'height' && writable) {
+	    else if (key == 'height' && writable) {
             table += '<tr><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
                 '<td><input type="number" min="0" step="0.1" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
         }
-	else if (key == 'width' && writable) {
+	    else if (key == 'width' && writable) {
             table += '<tr><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
                 '<td><input type="number" min="0" step="0.05" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
-        }    
+        } 
+        else if (key == 'plant-community' && writable) {
+            table += '<tr><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                '<td><input list="plant-communities" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /><datalist id="plant-communities"><option value="1 -  Pioneering crusty lichens"><option value="2 - Abundant mosses and lichens"><option value="3 - Diverse mosses, some vascular plants, lichens rare"><option value="4 - Dominated by bramble, ivy and moss"><option value="5 - Shrubby and woody plants"></datalist></td></tr>';
+        }   
         else {
             table += '<tr><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
                 '<td><input type="text" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
