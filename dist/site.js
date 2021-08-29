@@ -30488,14 +30488,22 @@ module.exports = function(context) {
 	                maxZoom: 21
                 })
     	    }, {
-                title: 'Outdoor',
-                desc: 'OS Outdoor',
-                layer: L.tileLayer('https://api.os.uk/maps/raster/v1/zxy/Outdoor_3857/{z}/{x}/{y}.png?key=cka4FDAm4wJqckvuMIcgaORR7CLM41LQ', {
-                   attribution: 'Contains OS data &copy; Crown copyright and database rights 2021',
-                   maxNativeZoom: 20,
-	               maxZoom: 21
-		        })	    
-            }, {
+//              title: 'Road',
+//              desc: 'OS Road',
+//              layer: L.tileLayer('https://api.os.uk/maps/raster/v1/zxy/Road_3857/{z}/{x}/{y}.png?key=cka4FDAm4wJqckvuMIcgaORR7CLM41LQ', {
+//                attribution: 'Contains OS data &copy; Crown copyright and database rights 2021',
+//                maxNativeZoom: 20,
+//                maxZoom: 21
+//		        })	    
+//          }, {
+//             title: 'Outdoor',
+//             desc: 'OS Outdoor',
+//             layer: L.tileLayer('https://api.os.uk/maps/raster/v1/zxy/Outdoor_3857/{z}/{x}/{y}.png?key=cka4FDAm4wJqckvuMIcgaORR7CLM41LQ', {
+//                attribution: 'Contains OS data &copy; Crown copyright and database rights 2021',
+//                maxNativeZoom: 20,
+//                maxZoom: 21
+//	        })	    
+//          }, {
                 title: 'OS NG',
                 desc: 'OS National Grid ~1950',
                 layer: L.tileLayer('https://mapseries-tilesets.s3.amazonaws.com/os/britain10knatgrid/{z}/{x}/{y}.png', {
@@ -30760,29 +30768,29 @@ function bindPopup(l) {
                 table += '<tr><th><input type="text" value="condition"' + (!writable ? ' readonly' : '') + ' /></th>' +
                     '<td><input list="conditions" value=""' + (!writable ? ' readonly' : '') + ' /><datalist id="conditions"><option value="A - Excellent, stockproof"><option value="B - Sound, minor defects, stockproof"><option value="C - Potential or advancing deterioration, stockproof"><option value="D - Early stage of dereliction, not stockproof"><option value="E - Derelict, not stockproof"><option value="F - Remnant, not stockproof"><option value="G - Missing, not stockproof"></datalist></td></tr>';
             }
-            if (!('width' in properties)) {
-                table += '<tr><th><input type="text" value="width"' + (!writable ? ' readonly' : '') + ' /></th>' +
-                    '<td><input type="number" min="0" step="0.05" value="0.75"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
-            }
             if (!('height' in properties)) {
                 table += '<tr><th><input type="text" value="height"' + (!writable ? ' readonly' : '') + ' /></th>' +
                     '<td><input type="number" min="0" step="0.1" value="1.4"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
             }
-             if (!('wall-style' in properties)) {
+            if (!('width' in properties)) {
+                table += '<tr><th><input type="text" value="width"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                    '<td><input type="number" min="0" step="0.05" value="0.75"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+            }
+            if (!('wall-style' in properties)) {
                 table += '<tr><th><input type="text" value="wall-style"' + (!writable ? ' readonly' : '') + ' /></th>' +
-                    '<td><input type="text" value="Double-faced, in ditch of hillfort"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+                    '<td><input list="wall-styles" value=""' + (!writable ? ' readonly' : '') + ' /><datalist id="wall-styles"><option value="Double-faced, in ditch of hillfort"><option value="Double-faced, on top bank of hillfort"><option value=""><option value="Double-faced,  running up slope of hillfort"><option value="Double-faced, partially retaining"><option value=""><option value="Double-faced"></datalist></td></tr>';
             }
-            if (!('wall-stones' in properties)) {
-                table += '<tr><th><input type="text" value="wall-stones"' + (!writable ? ' readonly' : '') + ' /></th>' +
-                    '<td><input type="text" value="Roughly coursed, laminar and tabular rubble stone"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+            if (!('wall-stone' in properties)) {
+                table += '<tr><th><input type="text" value="wall-stone"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                    '<td><input list="wall-stones" value=""' + (!writable ? ' readonly' : '') + ' /><datalist id="wall-stones"><option value="Roughly coursed, laminar and tabular rubble stone"><option value="Regularly coursed, laminar and tabular faced stone blocks"></datalist></td></tr>';
             }
-            if (!('through-stones' in properties)) {
-                table += '<tr><th><input type="text" value="though-stones"' + (!writable ? ' readonly' : '') + ' /></th>' +
-                    '<td><input type="text" value="Though stones, flush, 3/4 or absent"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+            if (!('through-stone' in properties)) {
+                table += '<tr><th><input type="text" value="through-stone"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                    '<td><input list="through-stones" value=""' + (!writable ? ' readonly' : '') + ' /><datalist id="through-stones"><option value="Though stones, flush, 3/4 or absent"><option value="Though stones, full-length, flush"></datalist></td></tr>';
             }
-            if (!('top-stones' in properties)) {
-                table += '<tr><th><input type="text" value="top-stones"' + (!writable ? ' readonly' : '') + ' /></th>' +
-                    '<td><input type="text" value="Vertical cope stones, irregular, random order"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+            if (!('top-stone' in properties)) {
+                table += '<tr><th><input type="text" value="top-stone"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                    '<td><input list="top-stones" value=""' + (!writable ? ' readonly' : '') + ' /><datalist id="top-stones"><option value="Vertical cope stones, irregular, random order"><option value="Vertical cope stones, irregular, alternating"><option value="No cope stones"><option value="Horizontal cover stones, mortared"><option value="Horizontal cover stones, mortared with railings"></datalist></td></tr>';
             }
             if (!('stone-type' in properties)) {
                 table += '<tr><th><input type="text" value="stone-type"' + (!writable ? ' readonly' : '') + ' /></th>' +
@@ -30869,7 +30877,27 @@ function bindPopup(l) {
 	    else if (key == 'width' && writable) {
             table += '<tr><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
                 '<td><input type="number" min="0" step="0.05" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /></td></tr>';
+        }
+	    else if (key == 'wall-style' && writable) {
+            table += '<tr><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                '<td><input list="wall-styles" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /><datalist id="wall-styles"><option value="Double-faced, in ditch of hillfort"><option value="Double-faced, on top bank of hillfort"><option value=""><option value="Double-faced,  running up slope of hillfort"><option value="Double-faced, partially retaining"><option value=""><option value="Double-faced"></datalist></td></tr>';
+        }
+	    else if (key == 'wall-stone' && writable) {
+            table += '<tr><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                '<td><input list="wall-stones" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /><datalist id="wall-stones"><option value="Roughly coursed, laminar and tabular rubble stone"><option value="Regularly coursed, laminar and tabular faced stone blocks"></datalist></td></tr>';
         } 
+        else if (key == 'through-stone' && writable) {
+            table += '<tr><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                '<td><input list="through-stones" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /><datalist id="through-stones"><option value="Though stones, flush, 3/4 or absent"><option value="Though stones, full-length, flush"></datalist></td></tr>';
+        }
+        else if (key == 'top-stone' && writable) {
+            table += '<tr><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                '<td><input list="top-stones" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /><datalist id="top-stones"><option value="Vertical cope stones, irregular, random order"><option value="Vertical cope stones, irregular, alternating"><option value="No cope stones"><option value="Horizontal cover stones, mortared"><option value="Horizontal cover stones, mortared with railings"></datalist></td></tr>';
+        }
+        else if (key == 'stone-type' && writable) {
+            table += '<tr><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
+                '<td><input list="stone-types" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /><datalist id="stone-types"><option value="Upper Greensand"><option value="Purbeck Limestone"><option value="Portland Freestone"><option value="Corallian Limestone"><option value="Forest Marble"><option value="Fullers Earth Rock"><option value="Inferior Oolite"><option value="Ham Hill Limestone"><option value="Blue Lias"><option value="White Lias"></datalist></td></tr>';
+        }
         else if (key == 'plant-community' && writable) {
             table += '<tr><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
                 '<td><input list="plant-communities" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /><datalist id="plant-communities"><option value="1 -  Pioneering crusty lichens"><option value="2 - Abundant mosses and lichens"><option value="3 - Diverse mosses, some vascular plants, lichens rare"><option value="4 - Dominated by bramble, ivy and moss"><option value="5 - Shrubby and woody plants"></datalist></td></tr>';
