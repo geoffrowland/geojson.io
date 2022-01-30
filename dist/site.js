@@ -30496,14 +30496,14 @@ module.exports = function(context) {
 //                maxZoom: 21
 //		        })	    
 //          }, {
-//             title: 'Outdoor',
-//             desc: 'OS Outdoor',
-//             layer: L.tileLayer('https://api.os.uk/maps/raster/v1/zxy/Outdoor_3857/{z}/{x}/{y}.png?key=cka4FDAm4wJqckvuMIcgaORR7CLM41LQ', {
-//                attribution: 'Contains OS data &copy; Crown copyright and database rights 2021',
-//                maxNativeZoom: 20,
-//                maxZoom: 21
-//	        })	    
-//          }, {
+               title: 'Outdoor',
+               desc: 'OS Outdoor',
+               layer: L.tileLayer('https://api.os.uk/maps/raster/v1/zxy/Outdoor_3857/{z}/{x}/{y}.png?key=cka4FDAm4wJqckvuMIcgaORR7CLM41LQ', {
+                  attribution: 'Contains OS data &copy; Crown copyright and database rights 2021',
+                  maxNativeZoom: 20,
+                  maxZoom: 21
+ 	        })	    
+           }, {
                 title: 'OS NG',
                 desc: 'OS National Grid ~1950',
                 layer: L.tileLayer('https://mapseries-tilesets.s3.amazonaws.com/os/britain10knatgrid/{z}/{x}/{y}.png', {
