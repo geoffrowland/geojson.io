@@ -30856,11 +30856,11 @@ function bindPopup(l) {
         }
         else if (key == 'land-use-1' && writable) {
             table += '<tr><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
-                '<td><input list="land-uses-1" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /><datalist id="land-uses-1"><option value="A - Arable"><option value="B - Building, house, garden, farmhouse, churchyard"><option value="F - Rough grazing, moor, down, fell, meadow, "><option value="G - Permanent grass"><option value="R - Metalled road or railway"><option value="S - Sea, river, lake"><option value="T - Unsurfaced track"><option value="W - Metalled road or railway"></datalist></td></tr>';
+                '<td><input list="land-uses-1" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /><datalist id="land-uses-1"><option value="A - Arable"><option value="B - Building, house, garden, farmhouse, churchyard"><option value="F - Rough grazing, moor, down, fell, meadow, "><option value="G - Permanent grass"><option value="R - Metalled road or railway"><option value="S - Sea, river, lake"><option value="T - Unsurfaced track"><option value="W - Wood"><option value="Q - Quarry"></datalist></td></tr>';
         }
         else if (key == 'land-use-2' && writable) {
             table += '<tr><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
-                '<td><input list="land-uses-2" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /><datalist id="land-uses-2"><option value="A - Arable"><option value="B - Building, house, garden, farmhouse, churchyard"><option value="F - Rough grazing, moor, down, fell, meadow, "><option value="G - Permanent grass"><option value="R - Metalled road or railway"><option value="S - Sea, river, lake"><option value="T - Unsurfaced track"><option value="W - Metalled road or railway"></datalist></td></tr>';
+                '<td><input list="land-uses-2" value="' + properties[key] + '"' + (!writable ? ' readonly' : '') + ' /><datalist id="land-uses-2"><option value="A - Arable"><option value="B - Building, house, garden, farmhouse, churchyard"><option value="F - Rough grazing, moor, down, fell, meadow, "><option value="G - Permanent grass"><option value="R - Metalled road or railway"><option value="S - Sea, river, lake"><option value="T - Unsurfaced track"><option value="W - Wood"><option value="Q - Quarry"></datalist></td></tr>';
         }  
         else if (key == 'fencing' && writable) {
             table += '<tr><th><input type="text" value="' + key + '"' + (!writable ? ' readonly' : '') + ' /></th>' +
