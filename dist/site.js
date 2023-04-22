@@ -30528,16 +30528,17 @@ module.exports = function(context) {
 	               maxZoom: 21
 		        })
              }, {
-            //   title: 'BGS',
-            //      layer: L.tileLayer.wms('https://map.bgs.ac.uk/arcgis/services/BGS_Detailed_Geology/MapServer/WMSServer', {
-    	 	//        layers: 'BGS.50k.Bedrock,BGS.50k.Superficial.deposits,BGS.50k.Linear.features',
-            //        format: 'image/png',
-            //        minZoom: 13,
-            //        maxNativeZoom: 18,
-            //        maxZoom: 21,
-            //        attribution: '<a target="_blank" href = "https://www.bgs.ac.uk/data/services/wms.html" title="British Geological Survey">BGS</a> maps © UKRI 2020'
-            //    })
-            //}, {
+                title: 'BGS',
+                    layer: L.tileLayer.wms('https://map.bgs.ac.uk/arcgis/services/BGS_Detailed_Geology/MapServer/WMSServer', {
+    	            //layers: 'BGS.50k.Bedrock,BGS.50k.Superficial.deposits,BGS.50k.Linear.features',
+	            layers: 'BGS.50k.Bedrock',
+                    format: 'image/png',
+                    minZoom: 13,
+                    maxNativeZoom: 18,
+                    maxZoom: 21,
+                    attribution: '<a target="_blank" href = "https://www.bgs.ac.uk/data/services/wms.html" title="British Geological Survey">BGS</a> maps © UKRI 2020'
+                })
+            }, {
                 title: 'OSM',
                 desc: 'Open Street Map',
                 layer: L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
