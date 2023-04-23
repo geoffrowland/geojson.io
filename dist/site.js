@@ -28133,7 +28133,7 @@ function extend() {
 },{}],160:[function(require,module,exports){
 module.exports = function(hostname) {
     // Settings for geojson.io
-    L.mapbox.accessToken = 'pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXFhYTA2bTMyeW44ZG0ybXBkMHkifQ.gUGbDOPUN1v1fTs5SeOR4A';
+    L.mapbox.accessToken = 'pk.eyJ1IjoiZ2VvZmZyIiwiYSI6ImNpdmk0cjZvczAwNnQydGw1djIybnFjbDQifQ.oMoTczFKbJPPzYgM3Zj-0A';
     if (hostname === 'geojson.io') {
         L.mapbox.config.FORCE_HTTPS = true;
         return {
