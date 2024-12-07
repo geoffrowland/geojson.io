@@ -30534,7 +30534,7 @@ module.exports = function(context) {
     	            //layers: 'BGS.50k.Bedrock,BGS.50k.Superficial.deposits,BGS.50k.Linear.features',
 	            layers: 'BGS.50k.Bedrock',
                     format: 'image/png',
-                    //minZoom: 13,
+                    minZoom: 13,
                     maxNativeZoom: 18,
                     maxZoom: 21,
                     attribution: '<a target="_blank" href = "https://www.bgs.ac.uk/data/services/wms.html" title="British Geological Survey">BGS</a> maps © UKRI 2020'
@@ -30543,7 +30543,7 @@ module.exports = function(context) {
 		title: 'LiDAR DTM',
 		    desc: 'EA LiDAR Terrain 1m',
                     layer: L.tileLayer.wms('https://environment.data.gov.uk/spatialdata/lidar-composite-digital-terrain-model-dtm-1m/wms', {
-    	            layers: 'Lidar_Composite_DTM_1m',
+    	            layers: 'Lidar_Composite_Hillshade_DTM_1m',
                     format: 'image/png',
                     //minZoom: 13,
                     maxNativeZoom: 18,
