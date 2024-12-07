@@ -30550,16 +30550,24 @@ module.exports = function(context) {
                     maxZoom: 21,
                     attribution: '<a target="_blank" href = "https://www.bgs.ac.uk/data/services/wms.html" title="British Geological Survey">BGS</a> maps © UKRI 2020'
                 })
+	    }, {
+                title: 'OSM',
+                desc: 'Open Street Map',
+                layer: L.tileLayer('https://geo.nls.uk/mapdata3/lidar/england/{z}/{x}/{y}.png', {
+	                maxNativeZoom: 18,	
+	                maxZoom: 21,
+                    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                })
             }, {
                 title: 'OSM',
                 desc: 'Open Street Map',
                 layer: L.tileLayer('https://a.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 	                maxNativeZoom: 19,	
 	                maxZoom: 21,
-                    attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                    attribution: '&copy; NLS'
                 })
             }];
-        
+	            
         var layerSwap = function(d) {
             var clicked = this instanceof d3.selection ? this.node() : this;
             layerButtons.classed('active', function() {
